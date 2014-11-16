@@ -2,7 +2,7 @@ var express = require('express')
 var app = express();
 
 
-//var myFirebaseRef = new Firebase("https://shining-heat-3529.firebaseio.com/");
+var myFirebaseRef = new Firebase("https://shining-heat-3529.firebaseio.com/");
 
 //myFirebaseRef.child("buyers").on("value", function(snapshot) {
     //alert(snapshot.val()); // Alerts "San Francisco"
