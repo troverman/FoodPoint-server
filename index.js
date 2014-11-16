@@ -7,25 +7,32 @@ var myFirebaseRef = new Firebase("https://shining-heat-3529.firebaseio.com/marke
 // Retrieve new posts as they are added to Firebase
 myFirebaseRef.on("child_changed", function(snapshot) {
 	var market_info = snapshot.val();
+
+	// re test how sellers there are
 	console.log(snapshot.val());
 });
 
 
 //email after 5 sellers in market
 
+var sendgrid_username = 'troverman';
+var sendgrid_password = 'trev77922';
+var to = 'troverman@gmail.com';
+var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
+var email = new sendgrid.Email();
+email.addTo(to);
+email.setFrom(to);
+email.setSubject('[sendgrid-php-example] Owl');
+email.setText('Owl are you doing?');
+email.setHtml('<strong>%how% are you doing?</strong>');
+email.addSubstitution("%how%", "Owl");
+email.addHeader('X-Sent-Using', 'SendGrid-API');
+email.addHeader('X-Transport', 'web');
+email.addFile({path: './gif.gif', filename: 'owl.gif'});
 
-
-
-
-var sendgrid  = require('sendgrid')('troverman', 'trev77922');
-sendgrid.send({
-  to:       'troverman@gmail.com',
-  from:     'troverman@gmail.com',
-  subject:  'Hello World',
-  text:     'My first email through SendGrid.'
-}, function(err, json) {
-  if (err) { return console.error(err); }
-  console.log(json);
+sendgrid.send(email, function(err, json) {
+if (err) { return console.error(err); }
+	console.log(json);
 });
 
 
