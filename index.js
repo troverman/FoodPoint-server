@@ -11,9 +11,8 @@ myFirebaseRef.on("child_changed", function(snapshot) {
 });
 
 
-var sendgrid  = require('sendgrid')(troverman, trev77922);
-
 //email after 5 sellers in market
+var sendgrid  = require('sendgrid')('troverman', 'trev77922');
 /*sendgrid.send({
   to:       'example@example.com',
   from:     'other@example.com',
