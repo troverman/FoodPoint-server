@@ -6,6 +6,13 @@ var baseURL = "https://shining-heat-3529.firebaseio.com/";
 var rootRef = new Firebase(baseURL);
 var marketsRef = rootRef.child('markets');
 
+
+var requestsRef = rootRef.child('requests');
+requestsRef.on("child_added", function(snapshot) {
+	var newPost = snapshot.val();
+});
+
+
 marketsRef.orderByKey().on("child_added", function(snapshot) {	
 	var marketInfo = snapshot.val();
 	//console.log(marketInfo);
