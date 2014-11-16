@@ -20,7 +20,7 @@ myFirebaseRef.on("child_changed", function(snapshot) {
 var sendgrid  = require('sendgrid')('troverman', 'trev77922');
 sendgrid.send({
   to:       'troverman@gmail.com',
-  from:     'troverman@gmail.com',
+  from:     'sales@epoint.me',
   subject:  'Hello World',
   text:     'My first email through SendGrid.'
 }, function(err, json) {
