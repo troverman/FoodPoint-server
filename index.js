@@ -11,7 +11,7 @@ myFirebaseRef.on("child_changed", function(snapshot) {
 });
 
 
-
+//email after 5 sellers in market
 /*var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 sendgrid.send({
   to:       'example@example.com',
@@ -30,6 +30,10 @@ app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
   response.send('newPost')
+})
+
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'))
 })
 
 
