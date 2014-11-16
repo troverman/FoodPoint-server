@@ -5,7 +5,8 @@ var Firebase = require("firebase");
 var baseURL = "https://shining-heat-3529.firebaseio.com/";
 var rootRef = new Firebase(baseURL);
 var marketsRef = rootRef.child('markets');
-var requestRef = rootRef.child('requests');
+var sellerRequestRef = rootRef.child('requestSeller');
+var buyerRequestRef = rootRef.child('requestBuyer');
 
 
 // watch for new markets
@@ -53,8 +54,33 @@ marketsRef.orderByKey().on("child_changed", function(snapshot) {
 	}
 }); 
 
-// watch for change in currentRequest
-requestRef.orderByKey().on("child_changed", function(snapshot) {
+// watch for change in requestSeller
+sellerRequestRef.orderByKey().on("child_changed", function(snapshot) {
+	var request = snapshot.val();
+	console.log(request);
+	//console.log(marketInfo);
+
+	var sendgrid_username = 'troverman';
+	var sendgrid_password = 'trev77922';
+	var to = request.email;
+	var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
+	var email = new sendgrid.Email();
+	email.addTo(to);
+	email.setFrom('troverman@gmail.com');
+	email.setSubject('Foodpoint');
+	email.setHtml('<h2>Hey ' + request.name + ',</h2><p>Glad you\'re on board with Foodpoint! We\'ll let you know when more Sellers join ' + request.nameOfMarket + ' to open it up!</p><br>');
+	email.addHeader('X-Sent-Using', 'SendGrid-API');
+	email.addHeader('X-Transport', 'web');
+
+	sendgrid.send(email, function(err, json) {
+	if (err) { return console.error(err); }
+		console.log(json);
+	}); 
+
+}); 
+
+// watch for change in requestBuyer
+buyerRequestRef.orderByKey().on("child_changed", function(snapshot) {
 	var request = snapshot.val();
 	console.log(request);
 	//console.log(marketInfo);
@@ -75,8 +101,6 @@ requestRef.orderByKey().on("child_changed", function(snapshot) {
 	if (err) { return console.error(err); }
 		console.log(json);
 	}); 
-
-
 
 }); 
 
