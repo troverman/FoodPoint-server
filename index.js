@@ -70,8 +70,8 @@ function sendMail(buyers){
 		var email = new sendgrid.Email();
 		email.addTo(to);
 		email.setFrom(to);
-		email.setSubject('food point -- ');
-		email.setText('this is an email to the buyers');
+		email.setSubject('food point');
+		email.setText('glad youre on board with foodpoint and promoting local farmers!');
 		email.setHtml('<strong>what is going on yo</strong>');
 		email.addHeader('X-Sent-Using', 'SendGrid-API');
 		email.addHeader('X-Transport', 'web');
