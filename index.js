@@ -7,12 +7,16 @@ var myFirebaseRef = new Firebase("https://shining-heat-3529.firebaseio.com/marke
 // Retrieve new posts as they are added to Firebase
 myFirebaseRef.on("child_changed", function(snapshot) {
 	var market_info = snapshot.val();
-	alert(market_info);
 	console.log(snapshot.val());
 });
 
 
 //email after 5 sellers in market
+
+
+
+
+
 var sendgrid  = require('sendgrid')('troverman', 'trev77922');
 sendgrid.send({
   to:       'troverman@gmail.com',
@@ -23,12 +27,6 @@ sendgrid.send({
   if (err) { return console.error(err); }
   console.log(json);
 });
-
-
-
-
-
-
 
 
 
