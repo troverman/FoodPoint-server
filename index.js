@@ -10,6 +10,21 @@ myFirebaseRef.on("child_added", function(snapshot) {
 	console.log(snapshot.val());
 });
 
+
+
+/*var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+sendgrid.send({
+  to:       'example@example.com',
+  from:     'other@example.com',
+  subject:  'Hello World',
+  text:     'My first email through SendGrid.'
+}, function(err, json) {
+  if (err) { return console.error(err); }
+  console.log(json);
+});*/
+
+
+
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
@@ -20,3 +35,5 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
+
+
