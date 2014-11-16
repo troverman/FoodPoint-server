@@ -4,7 +4,7 @@ var Firebase = require("firebase");
 
 var myFirebaseRef = new Firebase("https://shining-heat-3529.firebaseio.com/");
 
-myFirebaseRef.on("shining-heat-3529 ", function(snapshot) {
+myFirebaseRef.on("shining-heat-3529", function(snapshot) {
 	console.log(snapshot.val());
 	}, 
 	function (errorObject) {
