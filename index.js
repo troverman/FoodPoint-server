@@ -4,12 +4,7 @@ var Firebase = require("firebase");
 
 var myFirebaseRef = new Firebase("https://shining-heat-3529.firebaseio.com/");
 
-myFirebaseRef.on("shining-heat-3529", function(snapshot) {
-	console.log(snapshot.val());
-	}, 
-	function (errorObject) {
-		console.log("The read failed: " + errorObject.code);
-});
+
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
