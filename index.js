@@ -1,8 +1,8 @@
 var express = require('express')
 var app = express();
+var Firebase = require("firebase");
 
-
-var myFirebaseRef = new Firebase("https://shining-heat-3529.firebaseio.com/");
+//var myFirebaseRef = new Firebase("https://shining-heat-3529.firebaseio.com/");
 
 //myFirebaseRef.child("buyers").on("value", function(snapshot) {
     //alert(snapshot.val()); // Alerts "San Francisco"
