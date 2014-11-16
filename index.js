@@ -71,8 +71,7 @@ function sendMail(buyers){
 		email.addTo(to);
 		email.setFrom(to);
 		email.setSubject('food point');
-		email.setText('glad youre on board with foodpoint and promoting local farmers!');
-		email.setHtml('<strong>what is going on yo</strong>');
+		email.setHtml('<p>glad youre on board with foodpoint and promoting local farmers!</p><br><hr><br><p>date: 11/11/11</p><br><hr><br><p>location: lat lng </p><br><hr><br>');
 		email.addHeader('X-Sent-Using', 'SendGrid-API');
 		email.addHeader('X-Transport', 'web');
 
