@@ -2,10 +2,10 @@ var express = require('express')
 var app = express();
 var Firebase = require("firebase");
 
-var myFirebaseRef = new Firebase("https://shining-heat-3529.firebaseio.com/buyers");
+var myFirebaseRef = new Firebase("https://shining-heat-3529.firebaseio.com/markets");
 
 // Retrieve new posts as they are added to Firebase
-myFirebaseRef.on("child_added", function(snapshot) {
+myFirebaseRef.on("child_changed", function(snapshot) {
 	var newPost = snapshot.val();
 	console.log(snapshot.val());
 });
@@ -29,7 +29,7 @@ app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
-  response.send('test')
+  response.send(newPost)
 })
 
 app.listen(app.get('port'), function() {
