@@ -6,14 +6,15 @@ var myFirebaseRef = new Firebase("https://shining-heat-3529.firebaseio.com/marke
 
 // Retrieve new posts as they are added to Firebase
 myFirebaseRef.on("child_changed", function(snapshot) {
-	var newPost = snapshot.val();
+	var market_info = snapshot.val();
 	console.log(snapshot.val());
 });
 
 
+var sendgrid  = require('sendgrid')(troverman, trev77922);
+
 //email after 5 sellers in market
-/*var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-sendgrid.send({
+/*sendgrid.send({
   to:       'example@example.com',
   from:     'other@example.com',
   subject:  'Hello World',
@@ -22,6 +23,21 @@ sendgrid.send({
   if (err) { return console.error(err); }
   console.log(json);
 });*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
