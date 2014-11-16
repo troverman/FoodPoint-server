@@ -5,7 +5,7 @@ var Firebase = require("firebase");
 var myFirebaseRef = new Firebase("https://shining-heat-3529.firebaseio.com/buyers");
 
 // Retrieve new posts as they are added to Firebase
-myFirebaseRef.on("value", function(snapshot) {
+myFirebaseRef.on("child_added", function(snapshot) {
 	var newPost = snapshot.val();
 	console.log(snapshot.val());
 });
@@ -14,11 +14,7 @@ app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
-	myFirebaseRef.on("value", function(snapshot) {
-		var newPost = snapshot.val();
-		console.log(snapshot.val());
-	});
-  response.send(snapshot.val())
+  response.send('test')
 })
 
 app.listen(app.get('port'), function() {
